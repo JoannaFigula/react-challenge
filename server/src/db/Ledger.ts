@@ -9,7 +9,7 @@ export interface LedgerEntity extends InMemoryDBEntity {
 }
 export const initialLedgers: LedgerEntity[] = [
   {
-    createdAt: new Date(2021, 11, 1, 7, 10).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 10).valueOf(),
     categoryId: '1',
     id: '1',
     title: 'Wynajem',
@@ -22,7 +22,7 @@ export const initialLedgers: LedgerEntity[] = [
     title: 'Przejazd pociągiem',
     mode: 'EXPENSE',
     amountInCents: 2000,
-    createdAt: new Date(2021, 11, 1, 7, 12).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 12).valueOf(),
   },
   {
     id: '3',
@@ -30,12 +30,12 @@ export const initialLedgers: LedgerEntity[] = [
     title: 'Przejazd pociągiem',
     mode: 'EXPENSE',
     amountInCents: 8500,
-    createdAt: new Date(2021, 11, 1, 7, 15).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 15).valueOf(),
   },
   {
     id: '4',
     categoryId: '3',
-    createdAt: new Date(2021, 11, 1, 7, 20).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 20).valueOf(),
     title: 'Restaurcja - gatto matto',
     mode: 'EXPENSE',
     amountInCents: 4500,
@@ -43,7 +43,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '5',
     categoryId: '3',
-    createdAt: new Date(2021, 11, 1, 7, 25).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 25).valueOf(),
     title: 'Pizza',
     mode: 'EXPENSE',
     amountInCents: 3000,
@@ -51,7 +51,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '6',
     categoryId: '3',
-    createdAt: new Date(2021, 11, 1, 7, 30).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 30).valueOf(),
     title: 'Restauracja - Mamma Mia!',
     mode: 'EXPENSE',
     amountInCents: 8000,
@@ -59,7 +59,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '7',
     categoryId: '4',
-    createdAt: new Date(2021, 11, 1, 7, 35).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 35).valueOf(),
     title: 'Gaz',
     mode: 'EXPENSE',
     amountInCents: 3600,
@@ -67,7 +67,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '8',
     categoryId: '4',
-    createdAt: new Date(2021, 11, 1, 7, 40).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 40).valueOf(),
     title: 'Energia',
     mode: 'EXPENSE',
     amountInCents: 16700,
@@ -75,7 +75,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '9',
     categoryId: '4',
-    createdAt: new Date(2021, 11, 1, 7, 45).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 45).valueOf(),
     title: 'Usługi komunalne',
     mode: 'EXPENSE',
     amountInCents: 5000,
@@ -83,7 +83,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '10',
     categoryId: '5',
-    createdAt: new Date(2021, 11, 1, 7, 46).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 46).valueOf(),
     title: 'Ubezpieczene na życie - składka',
     mode: 'EXPENSE',
     amountInCents: 3000,
@@ -91,7 +91,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '11',
     categoryId: '6',
-    createdAt: new Date(2021, 11, 1, 7, 48).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 48).valueOf(),
     title: 'Składka na poduszkę finansową',
     mode: 'EXPENSE',
     amountInCents: 100000,
@@ -99,7 +99,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '12',
     categoryId: '6',
-    createdAt: new Date(2021, 11, 1, 7, 50).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 50).valueOf(),
     title: 'Zakup WIG20',
     mode: 'EXPENSE',
     amountInCents: 50000,
@@ -107,7 +107,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '13',
     categoryId: '7',
-    createdAt: new Date(2021, 11, 1, 7, 55).valueOf(),
+    createdAt: new Date(2022, 0, 1, 7, 55).valueOf(),
     title: 'Bilety do kina',
     mode: 'EXPENSE',
     amountInCents: 3200,
@@ -115,7 +115,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '14',
     categoryId: '7',
-    createdAt: new Date(2021, 11, 1, 8, 10).valueOf(),
+    createdAt: new Date(2022, 0, 1, 8, 10).valueOf(),
     title: 'Fryzjer',
     mode: 'EXPENSE',
     amountInCents: 12000,
@@ -123,7 +123,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '15',
     categoryId: '8',
-    createdAt: new Date(2021, 11, 1, 8, 20).valueOf(),
+    createdAt: new Date(2022, 0, 1, 8, 20).valueOf(),
     title: 'Chemia do kuchni',
     mode: 'EXPENSE',
     amountInCents: 2800,
@@ -131,7 +131,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '16',
     categoryId: '8',
-    createdAt: new Date(2021, 11, 1, 8, 25).valueOf(),
+    createdAt: new Date(2022, 0, 1, 8, 25).valueOf(),
     title: 'Waga łazienkowa',
     mode: 'EXPENSE',
     amountInCents: 8999,
@@ -139,7 +139,7 @@ export const initialLedgers: LedgerEntity[] = [
   {
     id: '17',
     categoryId: null,
-    createdAt: new Date(2021, 11, 1, 8, 30).valueOf(),
+    createdAt: new Date(2022, 0, 1, 8, 30).valueOf(),
     title: 'Wypłata',
     mode: 'INCOME',
     amountInCents: 1200000,

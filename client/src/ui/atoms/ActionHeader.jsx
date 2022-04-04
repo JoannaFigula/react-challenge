@@ -14,8 +14,18 @@ export const ActionHeader = ({
         xs: 3,
         md: 0,
       }}
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+      }}
     >
-      <Typography component={variant} variant={variant} marginBottom={3}>
+      <Typography
+        component={variant}
+        variant={variant}
+        marginBottom={3}
+        display={'flex-inline'}
+      >
         {title}
       </Typography>
       {renderActions()}

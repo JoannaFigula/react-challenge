@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import { LedgerWidget, Page } from 'ui';
 
-// TASK 1 - prepare dashboard grid  with dummy components
 export const WalletPage = () => (
   <Page title={'Portfel'}>
     <Grid container spacing={{ xs: 3, md: 6 }}>

@@ -14,7 +14,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#beb1ff',
     budgetId: '1',
     ledgerIds: ['1'],
-    createdAt: new Date(2021, 11, 1, 9, 10).valueOf(),
+    createdAt: new Date(2022, 1, 1, 9, 10).valueOf(),
   },
   {
     id: '2',
@@ -22,7 +22,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#fdd900',
     budgetId: '2',
     ledgerIds: ['2', '3'],
-    createdAt: new Date(2021, 11, 1, 9, 20).valueOf(),
+    createdAt: new Date(2022, 1, 1, 9, 20).valueOf(),
   },
   {
     id: '3',
@@ -30,7 +30,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#6fc2a7',
     budgetId: '3',
     ledgerIds: ['4', '5', '6'],
-    createdAt: new Date(2021, 11, 1, 9, 30).valueOf(),
+    createdAt: new Date(2022, 1, 1, 9, 30).valueOf(),
   },
   {
     id: '4',
@@ -38,7 +38,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#f7f600',
     budgetId: '4',
     ledgerIds: ['7', '8', '9'],
-    createdAt: new Date(2021, 11, 1, 9, 40).valueOf(),
+    createdAt: new Date(2022, 1, 1, 9, 40).valueOf(),
   },
   {
     id: '5',
@@ -46,7 +46,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#97e1ff',
     budgetId: null,
     ledgerIds: ['10'],
-    createdAt: new Date(2021, 11, 1, 9, 50).valueOf(),
+    createdAt: new Date(2022, 1, 1, 9, 50).valueOf(),
   },
   {
     id: '6',
@@ -54,7 +54,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#006d7a',
     budgetId: '5',
     ledgerIds: ['11', '12'],
-    createdAt: new Date(2021, 11, 1, 10, 10).valueOf(),
+    createdAt: new Date(2022, 1, 1, 10, 10).valueOf(),
   },
   {
     id: '7',
@@ -62,7 +62,7 @@ export const initialCategories: CategoryEntity[] = [
     color: '#ff7b44',
     budgetId: '6',
     ledgerIds: ['13', '14'],
-    createdAt: new Date(2021, 11, 1, 11, 10).valueOf(),
+    createdAt: new Date(2022, 1, 1, 11, 10).valueOf(),
   },
   {
     id: '8',
@@ -70,6 +70,6 @@ export const initialCategories: CategoryEntity[] = [
     color: '#93ab8e',
     budgetId: '7',
     ledgerIds: ['15', '16'],
-    createdAt: new Date(2021, 11, 1, 12, 10).valueOf(),
+    createdAt: new Date(2022, 1, 1, 12, 10).valueOf(),
   },
 ];

@@ -9,7 +9,7 @@ export const ColorBox = ({ color }) => {
         background: color,
         width: '16px',
         height: '16px',
-        borderRadius: '2px',
+        borderRadius: '50%',
         marginRight: '10px',
       }}
     />
