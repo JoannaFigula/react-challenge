@@ -4,8 +4,6 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { Grid } from '@mui/material';
 import { BudgetTableWidget } from 'ui/organisms/BudgetTable.widget';
 
-
-
 export const BudgetPage = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -38,8 +36,6 @@ export const BudgetPage = () => {
           </Grid>
         </Grid>
       </Card>
-
-     
     </Page>
   );
 };
