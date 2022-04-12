@@ -3,11 +3,17 @@ import { Box, TextField } from '@mui/material';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import * as PropTypes from 'prop-types';
 import { useForm, Controller } from 'react-hook-form';
+import { useSnackbar } from 'notistack';
 
 import { CategoryService, LedgerService } from 'api';
 import { Modal, CategoryField, Loader, Error, NoContent } from 'ui';
 import { formatDollarsToCents } from 'utils';
-import { LEDGER_QUERY, CATEGORIES_QUERY, BUDGET_QUERY } from 'queryKeys';
+import {
+  LEDGER_QUERY,
+  CATEGORIES_QUERY,
+  BUDGET_QUERY,
+  SUMMARY_QUERY,
+} from 'queryKeys';
 
 const translationKeys = {
   income: 'wpływ',
@@ -16,6 +22,8 @@ const translationKeys = {
 
 export const AddNewLedgerRecordModal = ({ open, onClose, type }) => {
   const queryClient = useQueryClient();
+  const { enqueueSnackbar } = useSnackbar();
+
   const { handleSubmit, control, formState, reset } = useForm({
     mode: 'onChange',
   });
@@ -24,15 +32,22 @@ export const AddNewLedgerRecordModal = ({ open, onClose, type }) => {
     error,
     data: categories,
   } = useQuery(CATEGORIES_QUERY, () => CategoryService.findAll());
-
   const mutation = useMutation(
     (requestBody) => LedgerService.create({ requestBody }),
     {
-      onSuccess: async () => {
+      onSuccess: async (data) => {
         await queryClient.refetchQueries([LEDGER_QUERY]);
         await queryClient.refetchQueries([BUDGET_QUERY]);
+        await queryClient.refetchQueries([SUMMARY_QUERY]);
+
+        data.mode === 'INCOME'
+          ? enqueueSnackbar('Wpływ został dodany', { variant: 'success' })
+          : enqueueSnackbar('Wydatek został zapisany', { variant: 'success' });
+
         handleClose();
       },
+      onError: () =>
+        enqueueSnackbar('Wystąpił nieoczekiwany błąd.', { variant: 'error' }),
     },
   );
 

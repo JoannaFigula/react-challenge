@@ -20,6 +20,7 @@ export const LedgerChartWidget = () => {
     SUMMARY_QUERY,
     async () => {
       const fetchData = await SummaryService.findAll();
+
       return fetchData;
     },
     {

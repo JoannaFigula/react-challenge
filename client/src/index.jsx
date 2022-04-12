@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { SnackbarProvider } from 'notistack';
+import Slide from '@mui/material/Slide';
 
 import './index.css';
 import '@fontsource/roboto/300.css';
@@ -11,7 +13,16 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SnackbarProvider
+      maxSnack={3}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      TransitionComponent={Slide}
+    >
+      <App />
+    </SnackbarProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

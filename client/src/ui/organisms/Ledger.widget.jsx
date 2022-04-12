@@ -4,6 +4,8 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 
+import { useSnackbar } from 'notistack';
+
 import {
   ActionHeader,
   Button,
@@ -18,13 +20,14 @@ import {
   Card,
 } from 'ui';
 import { LedgerService } from 'api';
-import { BUDGET_QUERY, LEDGER_QUERY } from 'queryKeys';
+import { BUDGET_QUERY, LEDGER_QUERY, SUMMARY_QUERY } from 'queryKeys';
 
 export const LedgerWidget = () => {
   const [modalVisible, toggleModal] = useState(false);
   const [modalType, setModalType] = useState('');
 
   const queryClient = useQueryClient();
+  const { enqueueSnackbar } = useSnackbar();
 
   const { isLoading, error, data } = useQuery(LEDGER_QUERY, () =>
     LedgerService.findAll(),
@@ -34,7 +37,11 @@ export const LedgerWidget = () => {
     onSuccess: async () => {
       await queryClient.refetchQueries([LEDGER_QUERY]);
       await queryClient.refetchQueries([BUDGET_QUERY]);
+      await queryClient.refetchQueries([SUMMARY_QUERY]);
+      enqueueSnackbar('Element został usunięty.', { variant: 'success' });
     },
+    onError: () =>
+      enqueueSnackbar('Wystąpił nieoczekiwany błąd.', { variant: 'error' }),
   });
 
   const openModal = (modalType) => {
@@ -48,6 +55,7 @@ export const LedgerWidget = () => {
 
   return (
     <Card
+      data-test-id="wallet-top-sidebar"
       sx={{ minHeight: '80vh', height: '100%' }}
       title={
         <ActionHeader

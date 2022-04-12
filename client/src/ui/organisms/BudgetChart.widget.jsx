@@ -1,95 +1,71 @@
+import { Grid, Typography } from '@mui/material';
 import React from 'react';
-import { Card } from 'ui';
 import { useQuery } from 'react-query';
-import { BUDGET_QUERY } from 'queryKeys';
-import { BudgetService } from 'api';
-import { Loader } from 'ui/atoms/Loader';
-import { Error } from 'ui/atoms/Error';
-import { NoContent } from 'ui/atoms/NoContent';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-);
+import { BudgetService } from 'api';
+import { Card, Loader, Error } from 'ui';
+import { BUDGET_QUERY } from 'queryKeys';
 
 export const BudgetChartWidget = () => {
-  const {
-    isLoading,
-    error,
-    data: dataFetch,
-  } = useQuery(
+  const { isLoading, error, data } = useQuery(
     BUDGET_QUERY,
-    async () => {
-      const fetchData = await BudgetService.findAll();
-      return fetchData;
-    },
+    () => BudgetService.findAll(),
     {
-      onSuccess: (dataFetch) => {
-        console.log('success');
-        console.log(dataFetch);
-      },
-    },
-    {
-      retry: false,
-      refetchOnWindowFocus: false,
+      select: React.useCallback((response) => {
+        const data = response.map(
+          ({ currentSpendingPercent }) => currentSpendingPercent,
+        );
+
+        return {
+          chartData: {
+            labels: response.map(({ category }) => `${category.name} %`),
+            datasets: [
+              {
+                axis: 'y',
+                data: data,
+                fill: false,
+                backgroundColor: response.map(({ category }) => category.color),
+                borderWidth: 0,
+              },
+            ],
+          },
+          hasData: !!data.length,
+        };
+      }, []),
     },
   );
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <Error error={error} />;
-  }
-
-  if (!dataFetch.length) {
-    return <NoContent />;
-  }
-
-  const options = {
-    indexAxis: 'y',
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-  };
-
-  const labels = dataFetch.map((el) => el.category?.name + ' %');
-  let bgColors = dataFetch.map((el) => el.category?.color);
-  let currentSpendingPercent = dataFetch.map((el) => el.currentSpendingPercent);
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        data: currentSpendingPercent,
-        backgroundColor: bgColors,
-      },
-    ],
-  };
-
   return (
-    <Card>
-      <h3 style={{ margin: '0', padding: '0' }}>Budżet</h3>
-      <p style={{ fontSize: '16px', marginTop: '0' }}>Podsumowanie wyników</p>
-      <Bar options={options} data={data} />
+    <Card
+      title={<Typography variant={'h4'}>Budżet</Typography>}
+      subheader={'Podsumowanie wydatków'}
+      data-test-id="wallet-bottom-sidebar"
+    >
+      {isLoading && <Loader />}
+      {!isLoading && error && <Error error={error} />}
+      {!isLoading && !error && (!data || !data.exists) && (
+        <Typography>Brak wyników</Typography>
+      )}
+      {!error && !isLoading && data && data.hasData && (
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Bar
+            type={'bar'}
+            data={data.chartData}
+            options={{
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: true,
+              plugins: { legend: { display: false } },
+            }}
+          />
+        </Grid>
+      )}
     </Card>
   );
 };
